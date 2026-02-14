@@ -20,7 +20,7 @@ body {
   font-family: 'Segoe UI', sans-serif;
   overflow: hidden;
   position: relative;
-  background: #000;
+  background: #ffe6ec;
 }
 
 /* ===== Background Images ===== */
@@ -36,14 +36,12 @@ body {
   flex: 1;
   background-size: cover;
   background-position: center;
-  opacity: 0.55;              /* More visible */
-  filter: brightness(0.85)    /* Not too dark */
-          contrast(1.05)
-          blur(2px);
+  opacity: 0.25; /* watermark feel */
+  filter: brightness(1.2) blur(2px);
   animation: zoomSlow 20s infinite alternate ease-in-out;
 }
 
-/* CHANGE IMAGE NAMES IF NEEDED */
+/* CHANGE IMAGE NAMES HERE IF NEEDED */
 .bg-left {
   background-image: url('photo1.jpg');
 }
@@ -54,15 +52,15 @@ body {
 
 @keyframes zoomSlow {
   from { transform: scale(1); }
-  to { transform: scale(1.05); }
+  to { transform: scale(1.1); }
 }
 
-/* Soft overlay (lighter than before) */
+/* Soft romantic overlay */
 .overlay {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.35); /* Balanced darkness */
+  background: rgba(255, 240, 245, 0.6);
   z-index: 1;
 }
 
@@ -70,16 +68,15 @@ body {
 .card {
   position: relative;
   z-index: 2;
-  background: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.4);
   padding: 40px;
   border-radius: 25px;
-  backdrop-filter: blur(18px);
-  box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
   text-align: center;
   width: 90%;
   max-width: 420px;
   animation: fadeIn 1.5s ease-in-out;
-  color: white;
 }
 
 @keyframes fadeIn {
@@ -90,7 +87,7 @@ body {
 h1 {
   font-size: 26px;
   margin-bottom: 30px;
-  color: #ffd6e0;
+  color: #c2185b;
 }
 
 /* ===== Buttons ===== */
@@ -121,7 +118,7 @@ button {
 }
 
 #noBtn {
-  background: #f5f5f5;
+  background: white;
   color: black;
   right: 15%;
 }
@@ -130,7 +127,7 @@ button {
   margin-top: 25px;
   font-size: 18px;
   font-weight: bold;
-  color: #ffe3ec;
+  color: #444;
 }
 
 /* Floating hearts */
@@ -138,7 +135,7 @@ button {
   position: fixed;
   font-size: 20px;
   animation: floatUp 4s linear infinite;
-  opacity: 0.9;
+  opacity: 0.8;
 }
 
 @keyframes floatUp {
@@ -163,6 +160,7 @@ button {
 
 <body>
 
+<!-- Background Images -->
 <div class="bg-container">
   <div class="bg bg-left"></div>
   <div class="bg bg-right"></div>
@@ -170,6 +168,7 @@ button {
 
 <div class="overlay"></div>
 
+<!-- Main Card -->
 <div class="card">
   <h1>Will you be my Valentine? ❤️</h1>
 
@@ -191,6 +190,7 @@ yesBtn.addEventListener("click", () => {
   createHearts();
 });
 
+// Make NO button run away
 noBtn.addEventListener("mouseover", () => {
   const x = Math.random() * 250;
   const y = Math.random() * 80;
@@ -200,7 +200,7 @@ noBtn.addEventListener("mouseover", () => {
 });
 
 noBtn.addEventListener("click", () => {
-  message.innerHTML = "Nice try 😏 But the only valid answer is YES 💘";
+  message.innerHTML = "Error 404: 'No' option not supported 😜 Please press YES 💘";
 });
 
 function createHearts() {
